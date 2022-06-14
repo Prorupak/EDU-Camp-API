@@ -28,7 +28,7 @@ const connectDB = require("../../config/db");
   const courses = require("./v1/routes/course");
   // const auth = require("./v1/routes/auth");
   const users = require("./v1/routes/users");
-  // const reviews = require("./v1/routes/reviews");
+  const reviews = require("./v1/routes/reviews");
 
   const app = express();
 
@@ -76,7 +76,7 @@ const connectDB = require("../../config/db");
   app.use("/api/v1/courses", courses);
   // app.use("/api/v1/auth", auth);
   app.use("/api/v1/users", users);
-  // app.use("/api/v1/reviews", review    s);
+  app.use("/api/v1/reviews", reviews);
 
   app.use(errorHandler);
 
