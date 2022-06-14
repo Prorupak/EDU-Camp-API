@@ -15,69 +15,72 @@ const errorHandler = require("./v1/middlewares/error");
 const connectDB = require("../../config/db");
 
 // Load env vars
-dotenv.config({ path: "../../config/config.env" });
 
-// Connect to database
-connectDB();
+  require("dotenv").config({
+    path: path.join(__dirname, "../../config/config.env"),
+  });
 
-// Route files
-// const bootcamps = require("./v1/routes/bootcamps");
-// const courses = require("./v1/routes/courses");
-// const auth = require("./v1/routes/auth");
-const users = require("./v1/routes/users");
-// const reviews = require("./v1/routes/reviews");
+  // Connect to database
+  connectDB();
 
-const app = express();
+  // Route files
+  // const bootcamps = require("./v1/routes/bootcamps");
+  // const courses = require("./v1/routes/courses");
+  // const auth = require("./v1/routes/auth");
+  const users = require("./v1/routes/users");
+  // const reviews = require("./v1/routes/reviews");
 
-// Body parser
-app.use(express.json());
+  const app = express();
 
-// Cookie parser
-app.use(cookieParser());
+  // Body parser
+  app.use(express.json());
 
-// Dev logging middleware
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
+  // Cookie parser
+  app.use(cookieParser());
 
-// File uploading
-app.use(fileupload());
+  // Dev logging middleware
+  if (process.env.NODE_ENV === "development") {
+    app.use(morgan("dev"));
+  }
 
-// Sanitize data
-app.use(mongoSanitize());
+  // File uploading
+  app.use(fileupload());
 
-// Set security headers
-app.use(helmet());
+  // Sanitize data
+  app.use(mongoSanitize());
 
-// Prevent XSS attacks
-app.use(xss());
+  // Set security headers
+  app.use(helmet());
 
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 mins
-  max: 100,
-});
-app.use(limiter);
+  // Prevent XSS attacks
+  app.use(xss());
 
-// Prevent http param pollution
-app.use(hpp());
+  // Rate limiting
+  const limiter = rateLimit({
+    windowMs: 10 * 60 * 1000, // 10 mins
+    max: 100,
+  });
+  app.use(limiter);
 
-// Enable CORS
-app.use(cors());
+  // Prevent http param pollution
+  app.use(hpp());
 
-// Set static folder
-app.use(express.static(path.join(__dirname, "public")));
+  // Enable CORS
+  app.use(cors());
 
-// Mount routers
-// app.use("/api/v1/bootcamps", bootcamps);
-// app.use("/api/v1/courses", courses);
-// app.use("/api/v1/auth", auth);
-app.use("/api/v1/users", users);
-// app.use("/api/v1/reviews", review    s);
+  // Set static folder
+  app.use(express.static(path.join(__dirname, "public")));
 
-app.use(errorHandler);
+  // Mount routers
+  // app.use("/api/v1/bootcamps", bootcamps);
+  // app.use("/api/v1/courses", courses);
+  // app.use("/api/v1/auth", auth);
+  app.use("/api/v1/users", users);
+  // app.use("/api/v1/reviews", review    s);
 
-const PORT = process.env.PORT || 5000;
+  app.use(errorHandler);
+
+  const PORT = process.env.PORT || 9000;
 
 const server = app.listen(
   PORT,
