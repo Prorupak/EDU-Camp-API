@@ -25,7 +25,7 @@ const connectDB = require("../../config/db");
 
   // Route files
   const bootcamps = require("./v1/routes/bootcamp");
-  // const courses = require("./v1/routes/courses");
+  const courses = require("./v1/routes/course");
   // const auth = require("./v1/routes/auth");
   const users = require("./v1/routes/users");
   // const reviews = require("./v1/routes/reviews");
@@ -73,7 +73,7 @@ const connectDB = require("../../config/db");
 
   // Mount routers
   app.use("/api/v1/bootcamps", bootcamps);
-  // app.use("/api/v1/courses", courses);
+  app.use("/api/v1/courses", courses);
   // app.use("/api/v1/auth", auth);
   app.use("/api/v1/users", users);
   // app.use("/api/v1/reviews", review    s);
