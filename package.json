@@ -2,10 +2,10 @@
   "name": "edu-camp-api",
   "version": "1.0.0",
   "description": "Refactored repo from EDU-Camp",
-  "main": "/src/api/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node src/api/index.js",
-    "dev": "nodemon src/api/index.js"
+    "start": "NODE_ENV=production node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
