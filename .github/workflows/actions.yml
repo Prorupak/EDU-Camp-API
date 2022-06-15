@@ -17,4 +17,3 @@ jobs:
         username: ${{ secrets.ftp_name }}
         password: ${{ secrets.ftp_password }}
         dangerous-clean-slate: true
-        local-dir: ./public/
