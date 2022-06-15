@@ -69,7 +69,7 @@ const connectDB = require("../../config/db");
   app.use(cors());
 
   // Set static folder
-  app.use(express.static(path.join(__dirname, "public")));
+  app.use(express.static(path.join(__dirname, "../../public")));
 
   // Mount routers
   app.use("/api/v1/bootcamps", bootcamps);
